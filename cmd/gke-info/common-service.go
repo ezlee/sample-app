@@ -13,6 +13,10 @@ import (
 	"os"
 
 	"cloud.google.com/go/compute/metadata"
+	"github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/network/mgmt/network"
+        "github.com/Azure/go-autorest/autorest"
+        "github.com/Azure/go-autorest/autorest/adal"
+        "github.com/Azure/go-autorest/autorest/to"
 )
 
 type CommonService interface {
@@ -38,7 +42,7 @@ func (cs commonService) MetaData(r *http.Request) *Instance {
 	instance.LBRequest = string(raw)
 	instance.ClientIP = r.RemoteAddr
 	instance.Version = version
-	instance.Color = "purple"
+	instance.Color = "yellow"
 	instance.PodName = os.Getenv("HOSTNAME")
 	return instance
 }
